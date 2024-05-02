@@ -1,0 +1,40 @@
+import time
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+from selenium import webdriver
+from selenium.common.exceptions import NoSuchElementException
+
+print("sample test case started")
+
+# Set the PATH environment variable to include the directory containing chromedriver.exe
+import os
+os.environ["PATH"] += os.pathsep + r"C:\Users\shrey\PycharmProjects\pythonProject1\Browsers"
+
+# Initialize Chrome WebDriver
+driver = webdriver.Chrome()
+
+# Maximize the window size
+driver.maximize_window()
+
+# Navigate to the URL
+driver.get("https://www.google.com/")
+
+try:
+    # Identify the Google search text box and enter the value
+    search_box = driver.find_element(By.NAME, "q")
+    search_box.send_keys("javatpoint")
+
+    time.sleep(3)
+
+    # Press Enter in the search box
+    search_box.send_keys(Keys.ENTER)
+
+    time.sleep(3)
+
+except NoSuchElementException:
+    print("Element not found on the page")
+
+finally:
+    # Close the browser
+    driver.close()
+print("sample test case successfully completed")
