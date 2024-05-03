@@ -6,12 +6,7 @@ pipeline {
                 git branch: 'main', url: "https://github.com/ShreyaNKumar/Demo2.git"
             }
         }
-        stage('Build') {
-            steps {
-                // Any build steps you want to include
-                echo 'Building ...'
-            }
-        }
+
         stage('Deploy') {
             steps {
                 bat "copy *.html C:\\xampp\\htdocs\\"
